@@ -8,7 +8,7 @@
 import Observation
 import XWeatherMapbox
 
-/// Demo map state 
+/// Demo map state bindings used by the `DemoMap` and `DemoMapLayerSelection` views.
 @Observable
 class DemoMapState {
 	

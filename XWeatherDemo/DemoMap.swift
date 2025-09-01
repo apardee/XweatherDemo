@@ -36,8 +36,6 @@ struct DemoMap: View {
 	
 	@State private var mapBounds: CoordinateBounds? = nil
 	
-	@State private var pendingMapBounds: CoordinateBounds? = nil
-	
 	var body: some View {
 		MapReader { proxy in
 			Map(viewport: $viewport) {
@@ -67,15 +65,14 @@ struct DemoMap: View {
 			.onMapLoaded { _ in
 				try? proxy.map?.setProjection(.init(name: .mercator))
 			}
-			.onCameraChanged { cameraChanged in
-				guard let mapboxMap = proxy.map else { return }
-				pendingMapBounds = mapboxMap.coordinateBounds(forCameraState: cameraChanged.cameraState)
-			}
 			.onMapIdle { _ in
 				// Using onMapIdle to apply the visible bounds used by the earthquake map source.
 				// This convention matches the refresh behavior of the layers and avoids content drop
 				// out in between source update and map idle (e.g. when panning the map).
-				mapBounds = pendingMapBounds
+				guard let map = proxy.map, let cameraState = proxy.map?.cameraState else {
+					return
+				}
+				mapBounds = map.coordinateBounds(forCameraState: cameraState)
 			}
 			.mapStyle(.dark)
 			.ignoresSafeArea()

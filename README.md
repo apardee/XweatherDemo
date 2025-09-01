@@ -1,6 +1,44 @@
 # XweatherDemo
 
-Basic library + demo iOS App with support for the display of Xweather content on a Mapbox map.
+This project contains a library and demo application using SwiftUI & Mapbox to display Xweather content on an interactive map. The Mapbox SDK was chosen for cross-platform compatibility, a featureset that closely matched the needs of this demo, and prior familiarity with the SDK.
+
+The project is split into two parts: the `XWeatherMapbox` package and top-level demo app making use of that package. This separation is overkill for a simple demo, but the separation is meant to show that the API as capable of providing a simple and easy to use interface with progressive disclosure of more advanced configuration.
+
+Here's a simple example of how the `XWeatherMapbox` package can be used to add content directly to a `MapboxMap` (see [DemoMap](XWeatherDemo/DemoMap.swift) for a more detailed example):
+
+```swift
+import SwiftUI
+import MapboxMaps
+import XWeatherMapbox
+
+struct MyWeatherMap: View {
+    @State private var mapBounds: CoordinateBounds? = nil
+    
+    var body: some View {
+        MapReader { proxy in
+            Map(viewport: $viewport) {
+                // Add radar layer
+                RasterMapContent(type: .radar)
+                    .rasterOpacity(0.7)
+                
+                // Add weather alerts
+                RasterMapContent(type: .alerts)
+                    .rasterOpacity(0.8)
+                
+                // Add earthquake data (requires map bounds)
+                if let mapBounds {
+                    EarthquakeMapContent(mapBounds: mapBounds, 
+                                       mode: .marker, 
+                                       opacity: 0.6)
+                }
+            }
+            .onMapIdle { _ in
+                mapBounds = proxy.map?.coordinateBounds(for: proxy.map?.cameraState ?? CameraState())
+            }
+        }
+    }
+}
+```
 
 ## System Requirements
 
