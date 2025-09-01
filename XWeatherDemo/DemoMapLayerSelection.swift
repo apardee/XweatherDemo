@@ -8,6 +8,7 @@
 import SwiftUI
 import XWeatherMapbox
 
+/// Basic layer selection view used to configure the visible map.
 struct DemoMapLayerSelectionView: View {
 	
 	@Bindable var demoMapState: DemoMapState

@@ -1,22 +1,16 @@
 # XWeatherDemo
 
-A SwiftUI iOS application demonstrating weather data visualization using XWeather and Mapbox integration.
+Basic library + demo iOS App with support for the display of Xweather content on a Mapbox map.
 
-## Requirements
+## System Requirements
 
-### System Requirements
-- iOS 16.0+
-- Xcode 16.0+
+* Building the application: Xcode 16.0+
+* Running the app: iOS 16.0+ device or simulator.
 
-### Dependencies
-- **MapboxMaps**: Mapbox SDK for iOS mapping functionality
-- **XWeatherMapbox**: XWeather integration library for weather data overlays
-- **SwiftUI**: Apple's declarative UI framework
+## Prerequisites
 
-## Setup
-
-### Prerequisites
-Before running the project, you'll need to obtain API credentials:
+### Configure API Access
+Before running the project, the following API credentials are required:
 
 1. **Mapbox Access Token**: 
    - Create an account at [Mapbox](https://www.mapbox.com/)
@@ -26,15 +20,20 @@ Before running the project, you'll need to obtain API credentials:
    - Sign up at [XWeather](https://www.xweather.com/)
    - Obtain your Client ID and Secret
 
-### Configuration
+## Building & Running
+Follow the instructions in this section to build and test the demo application locally:
+
+### Clone and open the project
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd XWeatherDemo
+   git clone https://github.com/apardee/XweatherDemo.git
+   cd XweatherDemo
    ```
 
-2. Configure API credentials in `XWeatherDemo/Info.plist`:
+2. Open `XWeatherDemo.xcodeproj` in Xcode
+
+3. In the project's `XWeatherDemo/Info.plist` configuration file, update the following values:
    ```xml
    <key>MBXAccessToken</key>
    <string>YOUR_MAPBOX_ACCESS_TOKEN</string>
@@ -44,9 +43,7 @@ Before running the project, you'll need to obtain API credentials:
    <string>YOUR_XWEATHER_SECRET</string>
    ```
 
-3. Open `XWeatherDemo.xcodeproj` in Xcode
-
-4. Build and run the project
+4. If running on a physical device instead of the iOS simulator, navigate to the project's `Signing & Capability` tab and set the `Team` drop down to a valid team associated with the logged in user.
 
 ## Usage
 
@@ -59,11 +56,6 @@ Before running the project, you'll need to obtain API credentials:
   - Enable/disable weather layers
   - Adjust layer opacity
   - Switch between different weather data types
-
-### Controls
-- **Layers Button**: Circular button with layer icon in the top-right corner
-- **Map Interaction**: Standard pinch-to-zoom and pan gestures
-- **Layer Popover**: Tap the layers button to access weather layer controls
 
 ## Project Structure
 
@@ -88,18 +80,6 @@ XWeatherDemo/
 - **MVVM Pattern**: State management using `@State` and observable objects
 - **Mapbox Integration**: Native iOS mapping with custom weather overlays
 - **XWeather SDK**: Professional weather data integration
-
-## Development
-
-### Building
-
-```bash
-# Open in Xcode
-open XWeatherDemo.xcodeproj
-
-# Or use xcodebuild
-xcodebuild -project XWeatherDemo.xcodeproj -scheme XWeatherDemo -destination 'platform=iOS Simulator,name=iPhone 15' build
-```
 
 ## API Documentation
 

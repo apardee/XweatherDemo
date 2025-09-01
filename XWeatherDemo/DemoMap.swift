@@ -9,6 +9,25 @@ import MapboxMaps
 import SwiftUI
 import XWeatherMapbox
 
+/// A demonstration SwiftUI view that showcases the integration of XWeatherMapbox with Mapbox's SwiftUI API.
+///
+/// `DemoMap` serves as a practical example of how to build weather-enabled map applications using
+/// the XWeatherMapbox package alongside Mapbox Maps SDK for SwiftUI. This implementation demonstrates
+/// how to layer multiple weather data sources onto a map with dynamic visibility and opacity controls.
+///
+/// The view integrates the following XWeatherMapbox features:
+/// - **Radar Data**: Real-time precipitation visualization using `RasterMapContent`
+/// - **Weather Alerts**: Active weather warnings and advisories overlay
+/// - **Earthquake Data**: Seismic activity display with both heatmap and marker presentation modes
+///
+/// Key integration patterns demonstrated:
+/// - State-driven layer management through `DemoMapState`
+/// - Dynamic map bounds handling for data-dependent layers (earthquakes)
+/// - Proper camera change and map idle event handling
+/// - Layer opacity and visibility controls
+///
+/// Use this implementation as a reference for building your own weather-enabled mapping applications
+/// with XWeatherMapbox and Mapbox SwiftUI.
 struct DemoMap: View {
 	
 	let state: DemoMapState

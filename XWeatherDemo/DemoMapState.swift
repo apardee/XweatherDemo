@@ -8,6 +8,7 @@
 import Observation
 import XWeatherMapbox
 
+/// Demo map state 
 @Observable
 class DemoMapState {
 	
