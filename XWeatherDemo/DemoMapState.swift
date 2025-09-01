@@ -11,11 +11,11 @@ import XWeatherMapbox
 @Observable
 class DemoMapState {
 	
-	var isRadarLayerEnabled = false
+	var isRadarLayerEnabled = true
 	
 	var radarLayerOpacity: Double = 0.5
 	
-	var isAlertsLayerEnabled = false
+	var isAlertsLayerEnabled = true
 	
 	var alertsLayerOpacity: Double = 0.5
 	
