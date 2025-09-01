@@ -9,10 +9,18 @@ import MapboxMaps
 
 public struct EarthquakeSourceContent: MapContent {
 	
+	public init(bounds: CoordinateBounds,
+				sourceId: String = Constants.defaultEarthquakeSourceId) {
+		self.bounds = bounds
+		self.sourceId = sourceId
+	}
+	
 	public let bounds: CoordinateBounds
 	
+	public let sourceId: String
+	
 	public var body: some MapContent {
-		GeoJSONSource(id: "earthquake-source") // TODO(AP): Make this configurable
+		GeoJSONSource(id: sourceId)
 			.data(.url(regionURL))
 			.generateId(true)
 	}
@@ -20,6 +28,6 @@ public struct EarthquakeSourceContent: MapContent {
 	private var regionURL: URL {
 		let format = EarthquakeRegionPathFormat(bounds: bounds,
 												credentials: Credentials.current).regionPath
-		return URL(string: format)! // TODO(AP): force unwrap
+		return URL(string: format)!
 	}
 }

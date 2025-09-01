@@ -9,7 +9,7 @@ struct RasterTilePathFormat {
 	
 	var type: String
 	
-	var format: String = "current.png"
+	var format: String = Constants.defaultRasterFormat
 	
 	var credentials: Credentials
 	

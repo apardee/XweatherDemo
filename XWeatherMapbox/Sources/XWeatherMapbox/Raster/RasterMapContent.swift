@@ -17,18 +17,18 @@ public struct RasterMapContent: MapContent {
 		var defaultLayerId: String {
 			switch self {
 			case .radar:
-				return "radar-layer"
+				return Constants.defaultRadarLayerId
 			case .alerts:
-				return "alert-layer"
+				return Constants.defaultAlertsLayerId
 			}
 		}
 		
 		var defaultSourceId: String {
 			switch self {
 			case .radar:
-				return "radar-source"
+				return Constants.defaultRadarSourceId
 			case .alerts:
-				return "alert-source"
+				return Constants.defaultAlertsSourceId
 			}
 		}
 	}

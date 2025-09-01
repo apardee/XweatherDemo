@@ -9,10 +9,17 @@ import MapboxMaps
 
 public struct EarthquakeHeatmapLayerContent: MapContent {
 	
+	public init(layerId: String = Constants.defaultEarthquakeMarkerLayerId,
+				sourceId: String = Constants.defaultEarthquakeSourceId,
+				opacity: Double = 1.0) {
+		self.layerId = layerId
+		self.sourceId = sourceId
+		self.opacity = opacity
+	}
+	
 	public var body: some MapContent {
-		// Heatmap layer with constant point weight & radius.
-		HeatmapLayer(id: "heatmap-layer", source: "earthquake-source") // TODO(AP): Make these configurable.
-			.sourceLayer("earthquake-source")
+		HeatmapLayer(id: layerId, source: sourceId)
+			.sourceLayer(sourceId)
 			.heatmapWeight(1.0)
 			.heatmapRadius(20.0)
 			.heatmapColor(colorExp)
@@ -57,4 +64,8 @@ public struct EarthquakeHeatmapLayerContent: MapContent {
 	}
 	
 	private var opacity: Double = 1.0
+	
+	private let layerId: String
+	
+	private let sourceId: String
 }

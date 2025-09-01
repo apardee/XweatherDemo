@@ -9,8 +9,16 @@ import MapboxMaps
 
 public struct EarthquakeMarkerLayerContent: MapContent {
 	
+	public init(layerId: String = Constants.defaultEarthquakeMarkerLayerId,
+				sourceId: String = Constants.defaultEarthquakeSourceId,
+				opacity: Double = 1.0) {
+		self.layerId = layerId
+		self.sourceId = sourceId
+		self.opacity = opacity
+	}
+	
 	public var body: some MapContent {
-		CircleLayer(id: "circle-layer", source: "earthquake-source")
+		CircleLayer(id: layerId, source: sourceId)
 			.circleRadius(8.0)
 			.circleStrokeColor("white")
 			.circleStrokeWidth(2.0)
@@ -43,4 +51,8 @@ public struct EarthquakeMarkerLayerContent: MapContent {
 	}
 	
 	private var opacity: Double = 1.0
+	
+	private let layerId: String
+	
+	private let sourceId: String
 }

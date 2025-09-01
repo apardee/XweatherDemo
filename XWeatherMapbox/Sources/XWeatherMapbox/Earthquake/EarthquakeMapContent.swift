@@ -14,10 +14,18 @@ public struct EarthquakeMapContent: MapContent {
 		case heatmap
 	}
 	
-	public init(mapBounds: CoordinateBounds, mode: Mode = .marker, opacity: Double = 1.0) {
+	public init(mapBounds: CoordinateBounds,
+				mode: Mode = .marker,
+				opacity: Double = 1.0,
+				earthquakeSourceId: String = Constants.defaultEarthquakeSourceId,
+				earthquakeHeatmapLayerId: String = Constants.defaultEarthquakeHeatmapLayerId,
+				earthquakeMarkerLayerId: String = Constants.defaultEarthquakeMarkerLayerId) {
 		self.mapBounds = mapBounds
 		self.mode = mode
 		self.opacity = opacity
+		self.earthquakeSourceId = earthquakeSourceId
+		self.earthquakeHeatmapLayerId = earthquakeHeatmapLayerId
+		self.earthquakeMarkerLayerId = earthquakeMarkerLayerId
 	}
 	
 	public var body: some MapContent {
@@ -28,17 +36,23 @@ public struct EarthquakeMapContent: MapContent {
 		// heatmap vs. point marker layer is conditional based on the mode
 		switch mode {
 		case .marker:
-			EarthquakeMarkerLayerContent()
+			EarthquakeMarkerLayerContent(layerId: earthquakeMarkerLayerId, sourceId: earthquakeSourceId)
 				.opacity(opacity)
 		case .heatmap:
-			EarthquakeHeatmapLayerContent()
+			EarthquakeHeatmapLayerContent(layerId: earthquakeHeatmapLayerId, sourceId: earthquakeSourceId)
 				.opacity(opacity)
 		}
 	}
+	
+	private var opacity: Double = 1.0
 	
 	private let mapBounds: CoordinateBounds
 	
 	private let mode: Mode
 	
-	private var opacity: Double = 1.0
+	private let earthquakeSourceId: String
+	
+	private let earthquakeHeatmapLayerId: String
+	
+	private let earthquakeMarkerLayerId: String
 }
