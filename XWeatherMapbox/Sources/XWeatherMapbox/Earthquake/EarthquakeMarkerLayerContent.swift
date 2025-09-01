@@ -7,8 +7,22 @@
 
 import MapboxMaps
 
+/// A map content component that displays earthquake data as individual circular markers.
+///
+/// `EarthquakeMarkerLayerContent` visualizes earthquakes as colored circles on the map,
+/// with colors indicating magnitude levels: green (low), yellow (moderate), orange (high),
+/// and red (severe). Each marker has a white stroke for better visibility.
+///
+/// This component is typically used by `EarthquakeMapContent` when configured with `.marker` mode,
+/// but can be used independently for custom earthquake visualizations.
 public struct EarthquakeMarkerLayerContent: MapContent {
 	
+	/// Creates a new earthquake marker layer content component.
+	///
+	/// - Parameters:
+	///   - layerId: The identifier for the marker layer. Uses the default if not specified.
+	///   - sourceId: The identifier for the earthquake data source. Uses the default if not specified.
+	///   - opacity: The opacity level for the markers (0.0 to 1.0). Defaults to `1.0`.
 	public init(layerId: String = Constants.defaultEarthquakeMarkerLayerId,
 				sourceId: String = Constants.defaultEarthquakeSourceId,
 				opacity: Double = 1.0) {
@@ -17,6 +31,7 @@ public struct EarthquakeMarkerLayerContent: MapContent {
 		self.opacity = opacity
 	}
 	
+	/// The map content body that creates the circle layer with magnitude-based styling.
 	public var body: some MapContent {
 		CircleLayer(id: layerId, source: sourceId)
 			.circleRadius(8.0)
@@ -26,6 +41,10 @@ public struct EarthquakeMarkerLayerContent: MapContent {
 			.circleOpacity(opacity)
 	}
 	
+	/// Sets the opacity level for the marker layer.
+	///
+	/// - Parameter opacity: The opacity value from 0.0 (fully transparent) to 1.0 (fully opaque).
+	/// - Returns: A new instance of `EarthquakeMarkerLayerContent` with the updated opacity setting.
 	public func opacity(_ opacity: Double) -> Self {
 		var result = self
 		result.opacity = opacity

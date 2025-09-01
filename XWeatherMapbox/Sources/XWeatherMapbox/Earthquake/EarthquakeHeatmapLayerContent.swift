@@ -7,8 +7,22 @@
 
 import MapboxMaps
 
+/// A map content component that displays earthquake data as a heatmap layer.
+///
+/// `EarthquakeHeatmapLayerContent` visualizes earthquake density using a color-coded heatmap,
+/// with colors ranging from blue (low density) to red (high density). The heatmap intensity
+/// scales with zoom level for optimal visualization at different map scales.
+///
+/// This component is typically used by `EarthquakeMapContent` when configured with `.heatmap` mode,
+/// but can be used independently for custom earthquake visualizations.
 public struct EarthquakeHeatmapLayerContent: MapContent {
 	
+	/// Creates a new earthquake heatmap layer content component.
+	///
+	/// - Parameters:
+	///   - layerId: The identifier for the heatmap layer. Uses the default if not specified.
+	///   - sourceId: The identifier for the earthquake data source. Uses the default if not specified.
+	///   - opacity: The opacity level for the heatmap (0.0 to 1.0). Defaults to `1.0`.
 	public init(layerId: String = Constants.defaultEarthquakeMarkerLayerId,
 				sourceId: String = Constants.defaultEarthquakeSourceId,
 				opacity: Double = 1.0) {
@@ -17,6 +31,7 @@ public struct EarthquakeHeatmapLayerContent: MapContent {
 		self.opacity = opacity
 	}
 	
+	/// The map content body that creates the heatmap layer with styling.
 	public var body: some MapContent {
 		HeatmapLayer(id: layerId, source: sourceId)
 			.sourceLayer(sourceId)
@@ -27,6 +42,10 @@ public struct EarthquakeHeatmapLayerContent: MapContent {
 			.heatmapOpacity(opacity)
 	}
 	
+	/// Sets the opacity level for the heatmap layer.
+	///
+	/// - Parameter opacity: The opacity value from 0.0 (fully transparent) to 1.0 (fully opaque).
+	/// - Returns: A new instance of `EarthquakeHeatmapLayerContent` with the updated opacity setting.
 	public func opacity(_ opacity: Double) -> Self {
 		var result = self
 		result.opacity = opacity
