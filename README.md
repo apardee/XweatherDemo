@@ -1,4 +1,4 @@
-# XWeatherDemo
+# XweatherDemo
 
 Basic library + demo iOS App with support for the display of Xweather content on a Mapbox map.
 
@@ -33,53 +33,39 @@ Follow the instructions in this section to build and test the demo application l
 
 2. Open `XWeatherDemo.xcodeproj` in Xcode
 
-3. In the project's `XWeatherDemo/Info.plist` configuration file, update the following values:
-   ```xml
-   <key>MBXAccessToken</key>
-   <string>YOUR_MAPBOX_ACCESS_TOKEN</string>
-   <key>XWeatherClientID</key>
-   <string>YOUR_XWEATHER_CLIENT_ID</string>
-   <key>XWeatherSecret</key>
-   <string>YOUR_XWEATHER_SECRET</string>
-   ```
+3. In the project file navigator on the left pane, select the `XWeatherDemo` project and navigate to the `Info` pane. Update the `MBXAccessToken` (Mapbox access token), `XWeatherClientID`, and `XWeatherSecret` values based on the credentials acquired in the prerequisite steps.
+
+<img width="779" height="126" alt="Screenshot 2025-09-01 at 4 44 14 PM" src="https://github.com/user-attachments/assets/7e3b63d8-0880-4218-9837-6fe3e6c4cc46" />
+
+> [!TIP]
+> This configuration can also be made directly to the [Info.plist](XWeatherDemo/Info.plist)
 
 4. If running on a physical device instead of the iOS simulator, navigate to the project's `Signing & Capability` tab and set the `Team` drop down to a valid team associated with the logged in user.
 
+5. Build and run the application.
+
 ## Usage
 
-### Features
-- **Interactive Map**: Pan and zoom to explore different geographical areas
-- **Weather Layers**: Toggle various weather data overlays including:
-  - Radar data visualization
-  - Customizable layer opacity controls
-- **Layer Selection**: Use the layers button (top-right) to:
-  - Enable/disable weather layers
-  - Adjust layer opacity
-  - Switch between different weather data types
+When the application launches, all available map layers are enabled. To configure the state of the map, open the layer selection UI using the button on the top right corner of the map:
+
+<img width="369" height="592" alt="Screenshot 2025-09-01 at 4 50 33 PM" src="https://github.com/user-attachments/assets/c0b91179-d4d8-4383-8713-95c92f564879" />
 
 ## Project Structure
 
 ```
 XWeatherDemo/
-├── XWeatherDemo/
-│   ├── XWeatherDemoApp.swift      # Main app entry point
-│   ├── ContentView.swift          # Main UI view
-│   ├── DemoMap.swift             # Map component with weather layers
-│   ├── DemoMapState.swift        # State management for map layers
-│   ├── DemoMapLayerSelection.swift # Layer selection UI
-│   ├── Extensions.swift          # Swift extensions and utilities
-│   ├── Info.plist               # App configuration and API keys
-│   └── Assets.xcassets/         # App icons and visual assets
-├── XWeatherMapbox/              # XWeather integration framework
-└── XWeatherDemo.xcodeproj/      # Xcode project file
+├── XWeatherDemo/                    # Demo map application using the XWeatherMapbox package
+│   ├── XWeatherDemoApp.swift        # Main app entry point
+│   ├── ContentView.swift            # Main UI view
+│   ├── DemoMap.swift                # Map component with weather layers
+│   ├── DemoMapState.swift           # State management for map layers
+│   ├── DemoMapLayerSelection.swift  # Layer selection UI
+│   ├── Extensions.swift             # Swift extensions and utilities
+│   ├── Info.plist                   # App configuration and API keys
+│   └── Assets.xcassets/             # App icons and visual assets
+├── XWeatherMapbox/                  # XWeather integration framework
+└── XWeatherDemo.xcodeproj/          # Xcode project file
 ```
-
-## Architecture
-
-- **SwiftUI**: Modern declarative UI framework
-- **MVVM Pattern**: State management using `@State` and observable objects
-- **Mapbox Integration**: Native iOS mapping with custom weather overlays
-- **XWeather SDK**: Professional weather data integration
 
 ## API Documentation
 
