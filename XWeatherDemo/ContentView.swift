@@ -17,6 +17,8 @@ struct ContentView: View {
 		ZStack {
 			DemoMap(state: demoMapState)
 			VStack {
+				Spacer()
+					.frame(height: 46)
 				HStack {
 					Spacer()
 					Button(action: {
@@ -29,7 +31,6 @@ struct ContentView: View {
 					.frame(width: 40, height: 40)
 					.background(Color(.black))
 					.clipShape(Circle())
-					.shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 2)
 					.popover(isPresented: $isLayerSelectionShown) {
 						DemoMapLayerSelectionView(demoMapState: demoMapState)
 							.presentationBackground(.black)
@@ -39,7 +40,7 @@ struct ContentView: View {
 				}
 				Spacer()
 			}
-			.padding()
+			.padding(8)
 		}
 	}
 }

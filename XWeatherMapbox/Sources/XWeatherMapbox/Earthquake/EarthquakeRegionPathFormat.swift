@@ -19,7 +19,7 @@ struct EarthquakeRegionPathFormat {
 			+ "client_id=\(credentials.clientId)&client_secret=\(credentials.secret)" + "&"
 			+ "format=geojson" + "&"
 			+ "from=-5days" + "&"
-			+ "limit=100" + "&"
+			+ "limit=500" + "&"
 			+ "p=" + boundsString + "&"
 	}
 	
