@@ -54,5 +54,5 @@ public struct Constants {
 	
 	static let apiSecretConfigKey = "XWeatherSecret"
 	
-	static let defaultRasterFormat = "current.png"
+	static let defaultRasterFormat = "current@2x.png"
 }
