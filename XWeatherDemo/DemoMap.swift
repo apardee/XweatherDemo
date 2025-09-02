@@ -40,16 +40,16 @@ struct DemoMap: View {
 		MapReader { proxy in
 			Map(viewport: $viewport) {
 				
-				// Add radar source and layer to the map.
-				if state.isRadarLayerEnabled {
-					RasterMapContent(type: .radar)
-						.rasterOpacity(state.radarLayerOpacity)
-				}
-
 				// Add alert source and layer to the map.
 				if state.isAlertsLayerEnabled {
 					RasterMapContent(type: .alerts)
 						.rasterOpacity(state.alertsLayerOpacity)
+				}
+				
+				// Add radar source and layer to the map.
+				if state.isRadarLayerEnabled {
+					RasterMapContent(type: .radar)
+						.rasterOpacity(state.radarLayerOpacity)
 				}
 				
 				// Add earthquake source to the map and conditionally add either

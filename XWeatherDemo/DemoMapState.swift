@@ -22,7 +22,7 @@ class DemoMapState {
 	
 	var isEarthquakeLayerEnabled = true
 	
-	var earthquakeLayerOpacity: Double = 0.5
+	var earthquakeLayerOpacity: Double = 1.0
 	
 	var earthquakeLayerMode: EarthquakeMapContent.Mode = .marker
 }

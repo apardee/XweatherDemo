@@ -63,7 +63,7 @@ public struct EarthquakeMarkerLayerContent: MapContent {
 			3
 			"rgba(255.0, 204.0, 0.0, 255.0)"
 			5
-			"rgba(255.0, 103.0, 0.0, 5.0)"
+			"rgba(255.0, 103.0, 0.0, 255.0)"
 			7
 			"rgba(255.0, 0.0, 0.0, 255.0)"
 		}
