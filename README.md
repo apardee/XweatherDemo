@@ -43,7 +43,7 @@ struct MyWeatherMap: View {
 ## System Requirements
 
 * Building the application: Xcode 16.0+
-* Running the app: iOS 16.0+ device or simulator.
+* Running the app: iOS 18.0+ device or simulator.
 
 ## Prerequisites
 
