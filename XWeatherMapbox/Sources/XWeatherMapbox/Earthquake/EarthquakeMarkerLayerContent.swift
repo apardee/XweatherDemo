@@ -39,6 +39,7 @@ public struct EarthquakeMarkerLayerContent: MapContent {
 			.circleStrokeWidth(2.0)
 			.circleColor(colorExp)
 			.circleOpacity(opacity)
+			.circleStrokeOpacity(opacity)
 	}
 	
 	/// Sets the opacity level for the marker layer.

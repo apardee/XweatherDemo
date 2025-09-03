@@ -7,6 +7,7 @@
 
 import Observation
 import XWeatherMapbox
+import MapboxMaps
 
 /// Demo map state bindings used by the `DemoMap` and `DemoMapLayerSelection` views.
 @Observable
@@ -25,4 +26,6 @@ class DemoMapState {
 	var earthquakeLayerOpacity: Double = 1.0
 	
 	var earthquakeLayerMode: EarthquakeMapContent.Mode = .marker
+	
+	var selectedEarthquakeFeature: QueriedFeature?
 }

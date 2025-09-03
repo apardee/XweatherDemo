@@ -61,6 +61,29 @@ struct DemoMap: View {
 										 mode: state.earthquakeLayerMode,
 										 opacity: state.earthquakeLayerOpacity)
 				}
+				
+				// Demonstrate surfacing data from the earthquake marker layer when tapped. This
+				// interaction drives the presentation of the `EarthquakeDetailSheet`.
+				TapInteraction { context in
+					// Handle tap events on earthquake markers when in marker mode
+					guard state.isEarthquakeLayerEnabled && state.earthquakeLayerMode == .marker else {
+						return false
+					}
+					
+					// Query for earthquake features at the tap location
+					let options = RenderedQueryOptions(layerIds: [XWeatherMapbox.Constants.defaultEarthquakeMarkerLayerId], filter: nil)
+					proxy.map?.queryRenderedFeatures(with: context.point, options: options) { result in
+						switch result {
+						case .success(let queriedFeatures):
+							if let firstFeature = queriedFeatures.first {
+								state.selectedEarthquakeFeature = firstFeature.queriedFeature
+							}
+						case .failure(_):
+							break
+						}
+					}
+					return state.selectedEarthquakeFeature != nil
+				}
 			}
 			.onMapLoaded { _ in
 				try? proxy.map?.setProjection(.init(name: .mercator))

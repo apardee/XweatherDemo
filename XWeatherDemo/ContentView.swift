@@ -16,6 +16,9 @@ struct ContentView: View {
 	var body: some View {
 		ZStack {
 			DemoMap(state: demoMapState)
+				.sheet(item: $demoMapState.selectedEarthquakeFeature) { feature in
+					EarthquakeDetailSheet(feature: feature)
+				}
 			VStack {
 				Spacer()
 					.frame(height: 46)
